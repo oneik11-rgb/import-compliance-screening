@@ -1,0 +1,87 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:156.0) Gecko/20100101 Firefox/156.0" version="29.3.8">
+  <diagram name="Page-1" id="q4f0UJB_4qqzFv-U9aDp">
+    <mxGraphModel dx="1376" dy="779" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-4" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-2" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-1" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Reviewer / Administrator " vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="60" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-35" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="p9K6aOlIWB5vGHln_Ghz-14">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="70" y="240" />
+              <mxPoint x="70" y="775" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-2" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&amp;nbsp; &amp;nbsp; &amp;nbsp;Authentication &amp;amp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;&lt;br&gt;&amp;nbsp;Authorization   " vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="190" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-8" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-6" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-3" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Document Ingestion &amp;amp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&lt;br&gt;&amp;nbsp;Input Validation" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-9" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-6" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-6" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Field Extraction Module" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="420" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-13" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-11" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Rule Engine" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-12" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-10" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-10" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Rule Configuration Store" vertex="1">
+          <mxGeometry height="60" width="120" x="290" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-18" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-11" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-14" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-11" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Explanation Generator" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="620" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-19" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-15" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-14" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Reviewer Interface" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="730" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-20" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-16" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-15" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Human Reviewer Decision" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="830" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-21" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-16" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-17" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-16" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Audit Logging" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="930" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-17" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="&lt;code&gt;&lt;span&gt;SQLite Database&lt;/span&gt;&lt;/code&gt;&lt;span aria-hidden=&quot;true&quot; class=&quot;PDq2pG_selectionAnchor&quot;&gt;&lt;/span&gt;" vertex="1">
+          <mxGeometry height="60" width="120" x="90" y="1020" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-24" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-22" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="p9K6aOlIWB5vGHln_Ghz-3" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-22" parent="1" style="rounded=0;whiteSpace=wrap;html=1;" value="Synthetic Import Document" vertex="1">
+          <mxGeometry height="60" width="120" x="310" y="310" as="geometry" />
+        </mxCell>
+        <mxCell id="p9K6aOlIWB5vGHln_Ghz-30" edge="1" parent="1" source="p9K6aOlIWB5vGHln_Ghz-2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.125;entryY=-0.033;entryDx=0;entryDy=0;entryPerimeter=0;" target="p9K6aOlIWB5vGHln_Ghz-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
