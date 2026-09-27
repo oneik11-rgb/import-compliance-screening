@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screening Results</title>
+</head>
+<body>
+    <h1>Import Compliance Screening Results</h1>
+
+    <h2>Extracted Fields</h2>
+
+    <ul>
+        <li><strong>Importer:</strong> {{ fields.importer or "Not found" }}</li>
+        <li><strong>Product:</strong> {{ fields.product or "Not found" }}</li>
+        <li><strong>Declared Value:</strong> {{ fields.declared_value or "Not found" }}</li>
+        <li><strong>HS Code:</strong> {{ fields.hs_code or "Not found" }}</li>
+        <li><strong>Country of Origin:</strong> {{ fields.country_of_origin or "Not found" }}</li>
+    </ul>
+
+    <h2>Original Synthetic Document</h2>
+
+    <pre>{{ document_text }}</pre>
+
+    <p>
+        <a href="/">Screen another document</a>
+    </p>
+</body>
+</html>
