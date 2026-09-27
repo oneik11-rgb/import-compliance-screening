@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reviewer Decision Saved</title>
+</head>
+<body>
+    <h1>Reviewer Decision Saved</h1>
+
+    <p>
+        <strong>Audit Record ID:</strong> {{ audit_id }}
+    </p>
+
+    <p>
+        <strong>Reviewer Decision:</strong> {{ decision }}
+    </p>
+
+    <p>
+        <strong>Reviewer Note:</strong>
+        {{ reviewer_note if reviewer_note else "No note provided" }}
+    </p>
+
+    <p>
+        The reviewer decision has been recorded in the audit log.
+    </p>
+
+    <p>
+        <a href="/">Screen another document</a>
+    </p>
+</body>
+</html>

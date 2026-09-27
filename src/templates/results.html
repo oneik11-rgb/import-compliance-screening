@@ -27,6 +27,56 @@
                 <strong>Status:</strong> {{ result.status }}<br>
                 <strong>Explanation:</strong> {{ result.explanation }}
             </p>
+
+            {% if result.status == "FLAG" %}
+                <h3>Human Reviewer Decision</h3>
+
+                <form method="post" action="/review">
+                    <input
+                        type="hidden"
+                        name="audit_id"
+                        value="{{ result.audit_id }}"
+                    >
+
+                    <label for="decision_{{ result.audit_id }}">
+                        Decision:
+                    </label>
+
+                    <select
+                        id="decision_{{ result.audit_id }}"
+                        name="decision"
+                        required
+                    >
+                        <option value="">Select a decision</option>
+                        <option value="CONFIRM_FLAG">Confirm Flag</option>
+                        <option value="OVERRIDE_FLAG">Override Flag</option>
+                        <option value="NEEDS_FURTHER_REVIEW">
+                            Needs Further Review
+                        </option>
+                    </select>
+
+                    <br><br>
+
+                    <label for="note_{{ result.audit_id }}">
+                        Reviewer Note:
+                    </label>
+                    <br>
+
+                    <textarea
+                        id="note_{{ result.audit_id }}"
+                        name="reviewer_note"
+                        rows="4"
+                        cols="60"
+                    ></textarea>
+
+                    <br><br>
+
+                    <button type="submit">
+                        Record Reviewer Decision
+                    </button>
+                </form>
+            {% endif %}
+
             <hr>
         </div>
     {% endfor %}
