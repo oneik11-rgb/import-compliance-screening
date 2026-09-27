@@ -2,6 +2,8 @@ import re
 
 from flask import Flask, render_template, request
 
+from rule_engine import evaluate_rules
+
 app = Flask(__name__)
 
 
@@ -32,11 +34,13 @@ def home():
 def screen_document():
     document_text = request.form.get("document_text", "")
     extracted_fields = extract_fields(document_text)
+    rule_results = evaluate_rules(extracted_fields)
 
     return render_template(
         "results.html",
         document_text=document_text,
         fields=extracted_fields,
+        results=rule_results,
     )
 
 

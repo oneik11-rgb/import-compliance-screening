@@ -18,6 +18,19 @@
         <li><strong>Country of Origin:</strong> {{ fields.country_of_origin or "Not found" }}</li>
     </ul>
 
+    <h2>Compliance Rule Results</h2>
+
+    {% for result in results %}
+        <div>
+            <p>
+                <strong>Rule:</strong> {{ result.rule_id }}<br>
+                <strong>Status:</strong> {{ result.status }}<br>
+                <strong>Explanation:</strong> {{ result.explanation }}
+            </p>
+            <hr>
+        </div>
+    {% endfor %}
+
     <h2>Original Synthetic Document</h2>
 
     <pre>{{ document_text }}</pre>
