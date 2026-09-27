@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Screening Results</title>
+</head>
+<body>
+    <h1>Import Compliance Screening Results</h1>
+
+    <h2>Extracted Fields</h2>
+
+    <ul>
+        <li><strong>Importer:</strong> {{ fields.importer or "Not found" }}</li>
+        <li><strong>Product:</strong> {{ fields.product or "Not found" }}</li>
+        <li><strong>Declared Value:</strong> {{ fields.declared_value or "Not found" }}</li>
+        <li><strong>HS Code:</strong> {{ fields.hs_code or "Not found" }}</li>
+        <li><strong>Country of Origin:</strong> {{ fields.country_of_origin or "Not found" }}</li>
+    </ul>
+
+    <h2>Compliance Rule Results</h2>
+
+    {% for result in results %}
+        <div>
+            <p>
+                <strong>Rule:</strong> {{ result.rule_id }}<br>
+                <strong>Status:</strong> {{ result.status }}<br>
+                <strong>Explanation:</strong> {{ result.explanation }}
+            </p>
+
+            {% if result.status == "FLAG" %}
+                <h3>Human Reviewer Decision</h3>
+
+                <form method="post" action="/review">
+                    <input
+                        type="hidden"
+                        name="audit_id"
+                        value="{{ result.audit_id }}"
+                    >
+
+                    <label for="decision_{{ result.audit_id }}">
+                        Decision:
+                    </label>
+
+                    <select
+                        id="decision_{{ result.audit_id }}"
+                        name="decision"
+                        required
+                    >
+                        <option value="">Select a decision</option>
+                        <option value="CONFIRM_FLAG">Confirm Flag</option>
+                        <option value="OVERRIDE_FLAG">Override Flag</option>
+                        <option value="NEEDS_FURTHER_REVIEW">
+                            Needs Further Review
+                        </option>
+                    </select>
+
+                    <br><br>
+
+                    <label for="note_{{ result.audit_id }}">
+                        Reviewer Note:
+                    </label>
+                    <br>
+
+                    <textarea
+                        id="note_{{ result.audit_id }}"
+                        name="reviewer_note"
+                        rows="4"
+                        cols="60"
+                    ></textarea>
+
+                    <br><br>
+
+                    <button type="submit">
+                        Record Reviewer Decision
+                    </button>
+                </form>
+            {% endif %}
+
+            <hr>
+        </div>
+    {% endfor %}
+
+    <h2>Original Synthetic Document</h2>
+
+    <pre>{{ document_text }}</pre>
+
+    <p>
+        <a href="/">Screen another document</a>
+    </p>
+</body>
+</html>

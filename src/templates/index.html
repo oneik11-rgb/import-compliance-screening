@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Import Compliance Screening System</title>
+</head>
+<body>
+    <h1>Import Compliance Screening System</h1>
+
+    <p>
+        Unit 4 Prototype — Explainable Human-in-the-Loop
+        Import Compliance Document Screening
+    </p>
+
+    <h2>Submit Synthetic Import Document</h2>
+
+    <form method="post" action="/screen">
+        <label for="document_text">
+            Enter the synthetic import document:
+        </label>
+        <br><br>
+
+        <textarea
+            id="document_text"
+            name="document_text"
+            rows="12"
+            cols="70"
+            required
+        >Importer: Sample Trading Ltd
+Product: Electric Bicycle
+Declared Value: 850.00
+HS Code: 8711.60
+Country of Origin: China</textarea>
+
+        <br><br>
+
+        <button type="submit">Screen Document</button>
+    </form>
+</body>
+</html>
