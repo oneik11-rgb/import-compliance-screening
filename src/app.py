@@ -25,11 +25,11 @@ ALLOWED_DECISIONS = {
 
 def extract_fields(document_text):
     patterns = {
-        "importer": r"(?im)^Importer:\s*(.+)$",
-        "product": r"(?im)^Product:\s*(.+)$",
-        "declared_value": r"(?im)^Declared Value:\s*([0-9]+(?:\.[0-9]+)?)\s*$",
-        "hs_code": r"(?im)^HS Code:\s*([0-9.]+)\s*$",
-        "country_of_origin": r"(?im)^Country of Origin:\s*(.+)$",
+        "importer": r"(?im)^Importer:[ \t]*([^\r\n]*)",
+        "product": r"(?im)^Product:[ \t]*([^\r\n]*)",
+        "declared_value": r"(?im)^Declared Value:[ \t]*([^\r\n]*)",
+        "hs_code": r"(?im)^HS Code:[ \t]*([^\r\n]*)",
+        "country_of_origin": r"(?im)^Country of Origin:[ \t]*([^\r\n]*)",
     }
 
     extracted = {}
