@@ -5,10 +5,12 @@ on:
     branches:
       - main
       - development
+      - "feature/**"
 
   pull_request:
     branches:
       - main
+      - development
 
 jobs:
   test:
@@ -28,6 +30,6 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Run automated tests
+      - name: Run automated tests with coverage
         run: |
-          python -m pytest -v
+          python -m pytest --cov=rule_engine --cov-report=term-missing --cov-fail-under=100 -v
