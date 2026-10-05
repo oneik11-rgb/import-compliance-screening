@@ -13,7 +13,7 @@ def evaluate_rules(fields):
     missing_fields = [
         label
         for key, label in required_fields.items()
-        if not fields.get(key)
+        if not str(fields.get(key) or "").strip()
     ]
 
     if missing_fields:
@@ -96,5 +96,15 @@ def evaluate_rules(fields):
                     f"prototype reference entry for HS code {hs_code}."
                 ),
             })
+
+    elif hs_code:
+        results.append({
+            "rule_id": "HS-001",
+            "status": "FLAG",
+            "explanation": (
+                f"HS code {hs_code} is not available in the current "
+                f"prototype reference table and requires human review."
+            ),
+        })
 
     return results
