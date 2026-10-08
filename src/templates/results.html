@@ -4,89 +4,368 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Screening Results</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2933;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 35px auto;
+            padding: 0 24px 50px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #d9e2ec;
+            border-radius: 10px;
+            padding: 24px;
+            margin-bottom: 22px;
+        }
+
+        h1,
+        h2 {
+            margin-top: 0;
+        }
+
+        .prototype-note {
+            background: #eef4f8;
+            border-left: 4px solid #486581;
+            padding: 12px 16px;
+            line-height: 1.5;
+            margin-top: 16px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border-bottom: 1px solid #d9e2ec;
+            padding: 11px 10px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            width: 30%;
+            background: #f7f9fb;
+        }
+
+        .result {
+            border: 1px solid #d9e2ec;
+            border-radius: 8px;
+            padding: 18px;
+            margin-bottom: 16px;
+        }
+
+        .pass {
+            border-left: 6px solid #2f855a;
+        }
+
+        .flag {
+            border-left: 6px solid #c53030;
+        }
+
+        .status-pass {
+            color: #276749;
+            font-weight: bold;
+        }
+
+        .status-flag {
+            color: #9b2c2c;
+            font-weight: bold;
+        }
+
+        .explanation {
+            line-height: 1.6;
+        }
+
+        .review-box {
+            background: #fffaf0;
+            border: 1px solid #f6ad55;
+            border-radius: 7px;
+            padding: 18px;
+            margin-top: 16px;
+        }
+
+        select,
+        textarea {
+            width: 100%;
+            max-width: 650px;
+            box-sizing: border-box;
+            padding: 9px;
+            margin-top: 6px;
+            border: 1px solid #bcccdc;
+            border-radius: 5px;
+        }
+
+        textarea {
+            min-height: 90px;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 14px;
+            background: #243b53;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 18px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #102a43;
+        }
+
+        pre {
+            white-space: pre-wrap;
+            background: #f7f9fb;
+            border: 1px solid #d9e2ec;
+            padding: 18px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        .screening-id {
+            color: #52606d;
+            font-size: 14px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 8px;
+            color: #334e68;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Import Compliance Screening Results</h1>
+    <div class="container">
 
-    <h2>Extracted Fields</h2>
+        <div class="card">
+            <h1>Import Compliance Screening Results</h1>
 
-    <ul>
-        <li><strong>Importer:</strong> {{ fields.importer or "Not found" }}</li>
-        <li><strong>Product:</strong> {{ fields.product or "Not found" }}</li>
-        <li><strong>Declared Value:</strong> {{ fields.declared_value or "Not found" }}</li>
-        <li><strong>HS Code:</strong> {{ fields.hs_code or "Not found" }}</li>
-        <li><strong>Country of Origin:</strong> {{ fields.country_of_origin or "Not found" }}</li>
-    </ul>
-
-    <h2>Compliance Rule Results</h2>
-
-    {% for result in results %}
-        <div>
-            <p>
-                <strong>Rule:</strong> {{ result.rule_id }}<br>
-                <strong>Status:</strong> {{ result.status }}<br>
-                <strong>Explanation:</strong> {{ result.explanation }}
+            <p class="screening-id">
+                Screening Record ID:
+                <strong>{{ screening_id }}</strong>
             </p>
 
-            {% if result.status == "FLAG" %}
-                <h3>Human Reviewer Decision</h3>
-
-                <form method="post" action="/review">
-                    <input
-                        type="hidden"
-                        name="audit_id"
-                        value="{{ result.audit_id }}"
-                    >
-
-                    <label for="decision_{{ result.audit_id }}">
-                        Decision:
-                    </label>
-
-                    <select
-                        id="decision_{{ result.audit_id }}"
-                        name="decision"
-                        required
-                    >
-                        <option value="">Select a decision</option>
-                        <option value="CONFIRM_FLAG">Confirm Flag</option>
-                        <option value="OVERRIDE_FLAG">Override Flag</option>
-                        <option value="NEEDS_FURTHER_REVIEW">
-                            Needs Further Review
-                        </option>
-                    </select>
-
-                    <br><br>
-
-                    <label for="note_{{ result.audit_id }}">
-                        Reviewer Note:
-                    </label>
-                    <br>
-
-                    <textarea
-                        id="note_{{ result.audit_id }}"
-                        name="reviewer_note"
-                        rows="4"
-                        cols="60"
-                    ></textarea>
-
-                    <br><br>
-
-                    <button type="submit">
-                        Record Reviewer Decision
-                    </button>
-                </form>
-            {% endif %}
-
-            <hr>
+            <div class="prototype-note">
+                <strong>Prototype scope:</strong>
+                The declaration was processed using synthetic
+                ASYCUDA-aligned data. Permit references shown below
+                indicate only that permit information was supplied.
+                The system does not validate permit authenticity,
+                validity, expiry, quantity, or approval against a live
+                government system.
+            </div>
         </div>
-    {% endfor %}
 
-    <h2>Original Synthetic Document</h2>
+        <div class="card">
+            <h2>Extracted Declaration Fields</h2>
 
-    <pre>{{ document_text }}</pre>
+            <table>
+                <tr>
+                    <th>Declaration Reference</th>
+                    <td>
+                        {{ fields.declaration_reference or "Not supplied" }}
+                    </td>
+                </tr>
 
-    <p>
-        <a href="/">Screen another document</a>
-    </p>
+                <tr>
+                    <th>Declaration Type</th>
+                    <td>
+                        {{ fields.declaration_type or "Not supplied" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Customs Office Code</th>
+                    <td>
+                        {{ fields.customs_office_code or "Not supplied" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Importer</th>
+                    <td>
+                        {{ fields.importer or "Not supplied" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Product</th>
+                    <td>
+                        {{ fields.product or "Not supplied" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Declared Value</th>
+                    <td>
+                        {{ fields.declared_value or "Not supplied" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>HS Code</th>
+                    <td>
+                        {{ fields.hs_code or "Not supplied" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Country of Origin</th>
+                    <td>
+                        {{ fields.country_of_origin or "Not supplied" }}
+                    </td>
+                </tr>
+
+                <tr>
+                    <th>Permit Reference</th>
+                    <td>
+                        {{ fields.permit_reference or "Not supplied" }}
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="card">
+            <h2>Compliance Rule Results</h2>
+
+            {% for result in results %}
+
+                <div
+                    class="result
+                    {% if result.status == 'PASS' %}
+                        pass
+                    {% else %}
+                        flag
+                    {% endif %}"
+                >
+
+                    <p>
+                        <strong>Rule:</strong>
+                        {{ result.rule_id }}
+                    </p>
+
+                    <p>
+                        <strong>Status:</strong>
+
+                        {% if result.status == "PASS" %}
+                            <span class="status-pass">
+                                PASS
+                            </span>
+                        {% else %}
+                            <span class="status-flag">
+                                FLAG
+                            </span>
+                        {% endif %}
+                    </p>
+
+                    <p class="explanation">
+                        <strong>Explanation:</strong>
+                        {{ result.explanation }}
+                    </p>
+
+                    {% if result.status == "FLAG" %}
+
+                        <div class="review-box">
+                            <h3>Human Reviewer Decision</h3>
+
+                            <form
+                                method="post"
+                                action="/review"
+                            >
+                                <input
+                                    type="hidden"
+                                    name="audit_id"
+                                    value="{{ result.audit_id }}"
+                                >
+
+                                <label
+                                    for="decision_{{ result.audit_id }}"
+                                >
+                                    Decision
+                                </label>
+
+                                <br>
+
+                                <select
+                                    id="decision_{{ result.audit_id }}"
+                                    name="decision"
+                                    required
+                                >
+                                    <option value="">
+                                        Select a decision
+                                    </option>
+
+                                    <option value="CONFIRM_FLAG">
+                                        Confirm Flag
+                                    </option>
+
+                                    <option value="OVERRIDE_FLAG">
+                                        Override Flag
+                                    </option>
+
+                                    <option value="NEEDS_FURTHER_REVIEW">
+                                        Further Review Required
+                                    </option>
+                                </select>
+
+                                <br><br>
+
+                                <label
+                                    for="note_{{ result.audit_id }}"
+                                >
+                                    Reviewer Note
+                                </label>
+
+                                <br>
+
+                                <textarea
+                                    id="note_{{ result.audit_id }}"
+                                    name="reviewer_note"
+                                ></textarea>
+
+                                <br>
+
+                                <button type="submit">
+                                    Record Reviewer Decision
+                                </button>
+                            </form>
+                        </div>
+
+                    {% endif %}
+
+                </div>
+
+            {% endfor %}
+        </div>
+
+        <div class="card">
+            <h2>Original Synthetic Declaration</h2>
+
+            <pre>{{ document_text }}</pre>
+
+            <a
+                class="back-link"
+                href="/"
+            >
+                ← Screen another declaration
+            </a>
+        </div>
+
+    </div>
 </body>
 </html>
