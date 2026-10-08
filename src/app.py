@@ -2,6 +2,7 @@ import re
 
 from flask import Flask, render_template, request
 
+from asycuda_adapter import to_screening_fields
 from database import (
     initialize_database,
     save_reviewer_decision,
@@ -24,21 +25,73 @@ ALLOWED_DECISIONS = {
 
 
 def extract_fields(document_text):
+    """
+    Extract supported fields from the synthetic import declaration.
+
+    Regular expressions are restricted to individual lines so that
+    an empty field cannot consume the following declaration field.
+    """
+
     patterns = {
-        "importer": r"(?im)^Importer:[ \t]*([^\r\n]*)",
-        "product": r"(?im)^Product:[ \t]*([^\r\n]*)",
-        "declared_value": r"(?im)^Declared Value:[ \t]*([^\r\n]*)",
-        "hs_code": r"(?im)^HS Code:[ \t]*([^\r\n]*)",
-        "country_of_origin": r"(?im)^Country of Origin:[ \t]*([^\r\n]*)",
+        "declaration_reference":
+            r"(?im)^Declaration Reference:[ \t]*([^\r\n]*)",
+
+        "declaration_type":
+            r"(?im)^Declaration Type:[ \t]*([^\r\n]*)",
+
+        "customs_office_code":
+            r"(?im)^Customs Office Code:[ \t]*([^\r\n]*)",
+
+        "importer":
+            r"(?im)^Importer:[ \t]*([^\r\n]*)",
+
+        "product":
+            r"(?im)^Product:[ \t]*([^\r\n]*)",
+
+        "declared_value":
+            r"(?im)^Declared Value:[ \t]*([^\r\n]*)",
+
+        "hs_code":
+            r"(?im)^HS Code:[ \t]*([^\r\n]*)",
+
+        "country_of_origin":
+            r"(?im)^Country of Origin:[ \t]*([^\r\n]*)",
+
+        "permit_reference":
+            r"(?im)^Permit Reference:[ \t]*([^\r\n]*)",
     }
 
     extracted = {}
 
     for field, pattern in patterns.items():
         match = re.search(pattern, document_text)
-        extracted[field] = match.group(1).strip() if match else None
+
+        if match:
+            extracted[field] = match.group(1).strip()
+        else:
+            extracted[field] = None
 
     return extracted
+
+
+def prepare_screening_fields(document_text):
+    """
+    Convert a raw synthetic declaration into normalized screening fields.
+
+    Integration flow:
+        raw declaration text
+        -> field extraction
+        -> ASYCUDA-aligned adapter
+        -> normalized screening fields
+    """
+
+    extracted_fields = extract_fields(document_text)
+
+    screening_fields = to_screening_fields(
+        extracted_fields
+    )
+
+    return screening_fields
 
 
 @app.route("/")
@@ -48,16 +101,39 @@ def home():
 
 @app.route("/screen", methods=["POST"])
 def screen_document():
-    document_text = request.form.get("document_text", "")
+    """
+    Process a synthetic ASYCUDA-aligned declaration through the
+    integrated compliance-screening workflow.
+    """
 
-    extracted_fields = extract_fields(document_text)
-    rule_results = evaluate_rules(extracted_fields)
+    document_text = request.form.get(
+        "document_text",
+        "",
+    )
 
+    # Extract fields for display and persistence.
+    extracted_fields = extract_fields(
+        document_text
+    )
+
+    # Pass the raw declaration through the integration boundary:
+    # extraction -> ASYCUDA adapter -> normalized screening fields.
+    screening_fields = prepare_screening_fields(
+        document_text
+    )
+
+    # Run the normalized declaration through the compliance rule engine.
+    rule_results = evaluate_rules(
+        screening_fields
+    )
+
+    # Save declaration and extracted data.
     screening_id = save_screening(
         document_text,
         extracted_fields,
     )
 
+    # Save automated rule results for auditability.
     saved_results = save_rule_results(
         screening_id,
         rule_results,
@@ -74,9 +150,25 @@ def screen_document():
 
 @app.route("/review", methods=["POST"])
 def review_result():
-    audit_id = request.form.get("audit_id", type=int)
-    decision = request.form.get("decision", "").strip()
-    reviewer_note = request.form.get("reviewer_note", "").strip()
+    """
+    Record the authorized human reviewer's decision for a flagged
+    compliance result.
+    """
+
+    audit_id = request.form.get(
+        "audit_id",
+        type=int,
+    )
+
+    decision = request.form.get(
+        "decision",
+        "",
+    ).strip()
+
+    reviewer_note = request.form.get(
+        "reviewer_note",
+        "",
+    ).strip()
 
     if audit_id is None or decision not in ALLOWED_DECISIONS:
         return "Invalid reviewer decision request.", 400

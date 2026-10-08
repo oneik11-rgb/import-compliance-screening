@@ -4,38 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Import Compliance Screening System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2933;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+
+        .header {
+            background: #ffffff;
+            border: 1px solid #d9e2ec;
+            border-radius: 10px;
+            padding: 28px;
+            margin-bottom: 22px;
+        }
+
+        h1 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .subtitle {
+            color: #52606d;
+            line-height: 1.5;
+        }
+
+        .notice {
+            background: #eef4f8;
+            border-left: 4px solid #486581;
+            padding: 14px 18px;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .card {
+            background: #ffffff;
+            border: 1px solid #d9e2ec;
+            border-radius: 10px;
+            padding: 28px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            min-height: 330px;
+            padding: 16px;
+            border: 1px solid #bcccdc;
+            border-radius: 6px;
+            font-family: Consolas, monospace;
+            font-size: 15px;
+            line-height: 1.5;
+            resize: vertical;
+        }
+
+        button {
+            margin-top: 18px;
+            background: #243b53;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 22px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #102a43;
+        }
+
+        .footer-note {
+            margin-top: 18px;
+            color: #616e7c;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Import Compliance Screening System</h1>
+    <div class="container">
 
-    <p>
-        Unit 4 Prototype — Explainable Human-in-the-Loop
-        Import Compliance Document Screening
-    </p>
+        <div class="header">
+            <h1>Import Compliance Screening System</h1>
 
-    <h2>Submit Synthetic Import Document</h2>
+            <p class="subtitle">
+                Explainable Human-in-the-Loop Import Compliance
+                Document Screening Prototype
+            </p>
 
-    <form method="post" action="/screen">
-        <label for="document_text">
-            Enter the synthetic import document:
-        </label>
-        <br><br>
+            <div class="notice">
+                <strong>Unit 6 integrated prototype:</strong>
+                Synthetic declaration data is structured to resemble
+                information that could be supplied by a customs
+                declaration environment such as ASYCUDA World.
+                This prototype does not connect to live Jamaica Customs
+                systems or validate official government records.
+            </div>
+        </div>
 
-        <textarea
-            id="document_text"
-            name="document_text"
-            rows="12"
-            cols="70"
-            required
-        >Importer: Sample Trading Ltd
+        <div class="card">
+            <h2>Submit Synthetic Import Declaration</h2>
+
+            <form method="post" action="/screen">
+                <label for="document_text">
+                    Synthetic declaration data
+                </label>
+
+                <textarea
+                    id="document_text"
+                    name="document_text"
+                    required
+                >Declaration Reference: C87-2026-001
+Declaration Type: IM4
+Customs Office Code: MBJ
+Importer: Sample Trading Ltd
 Product: Electric Bicycle
 Declared Value: 850.00
 HS Code: 8711.60
-Country of Origin: China</textarea>
+Country of Origin: China
+Permit Reference:</textarea>
 
-        <br><br>
+                <button type="submit">
+                    Screen Declaration
+                </button>
+            </form>
 
-        <button type="submit">Screen Document</button>
-    </form>
+            <p class="footer-note">
+                Screening results are generated using transparent
+                prototype rules. Any identified compliance issue remains
+                subject to review by an authorized human decision-maker.
+            </p>
+        </div>
+
+    </div>
 </body>
 </html>

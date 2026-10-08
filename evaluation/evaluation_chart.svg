@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="900"
+    height="500"
+    viewBox="0 0 900 500"
+>
+    <rect
+        width="100%"
+        height="100%"
+        fill="white"
+    />
+
+    <text
+        x="450"
+        y="55"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="26"
+        font-weight="bold"
+    >
+        Unit 6 Synthetic Evaluation Results
+    </text>
+
+    <text
+        x="450"
+        y="88"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="15"
+    >
+        Percentage-based prototype evaluation metrics
+    </text>
+
+    <text
+        x="30"
+        y="210"
+        font-family="Arial"
+        font-size="17"
+    >
+        Target-rule detection accuracy
+    </text>
+
+    <rect
+        x="280"
+        y="170"
+        width="520"
+        height="65"
+        fill="#e8edf2"
+    />
+
+    <rect
+        x="280"
+        y="170"
+        width="520.0"
+        height="65"
+        fill="#355c7d"
+    />
+
+    <text
+        x="815"
+        y="212"
+        font-family="Arial"
+        font-size="18"
+        font-weight="bold"
+    >
+        100.0%
+    </text>
+
+    <text
+        x="30"
+        y="340"
+        font-family="Arial"
+        font-size="17"
+    >
+        Clean-case pass rate
+    </text>
+
+    <rect
+        x="280"
+        y="300"
+        width="520"
+        height="65"
+        fill="#e8edf2"
+    />
+
+    <rect
+        x="280"
+        y="300"
+        width="520.0"
+        height="65"
+        fill="#4f7d6b"
+    />
+
+    <text
+        x="815"
+        y="342"
+        font-family="Arial"
+        font-size="18"
+        font-weight="bold"
+    >
+        100.0%
+    </text>
+
+    <line
+        x1="280"
+        y1="405"
+        x2="800"
+        y2="405"
+        stroke="black"
+        stroke-width="1"
+    />
+
+    <text
+        x="280"
+        y="435"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="14"
+    >
+        0%
+    </text>
+
+    <text
+        x="540.0"
+        y="435"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="14"
+    >
+        50%
+    </text>
+
+    <text
+        x="800"
+        y="435"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="14"
+    >
+        100%
+    </text>
+
+    <text
+        x="450"
+        y="475"
+        text-anchor="middle"
+        font-family="Arial"
+        font-size="13"
+    >
+        Labeled synthetic prototype cases; not production customs accuracy
+    </text>
+</svg>
