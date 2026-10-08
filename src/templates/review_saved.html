@@ -4,29 +4,103 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Reviewer Decision Saved</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            color: #1f2933;
+            margin: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: 60px auto;
+            padding: 0 24px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #d9e2ec;
+            border-radius: 10px;
+            padding: 32px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        .success {
+            background: #f0fff4;
+            border-left: 5px solid #2f855a;
+            padding: 18px;
+            margin: 22px 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 13px;
+            border-bottom: 1px solid #d9e2ec;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            width: 30%;
+            background: #f7f9fb;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 24px;
+            color: #334e68;
+            font-weight: bold;
+            text-decoration: none;
+        }
+    </style>
 </head>
+
 <body>
-    <h1>Reviewer Decision Saved</h1>
+    <div class="container">
 
-    <p>
-        <strong>Audit Record ID:</strong> {{ audit_id }}
-    </p>
+        <div class="card">
+            <h1>Reviewer Decision Saved</h1>
 
-    <p>
-        <strong>Reviewer Decision:</strong> {{ decision }}
-    </p>
+            <div class="success">
+                The reviewer decision has been successfully recorded
+                in the audit log.
+            </div>
 
-    <p>
-        <strong>Reviewer Note:</strong>
-        {{ reviewer_note if reviewer_note else "No note provided" }}
-    </p>
+            <table>
+                <tr>
+                    <th>Audit Record ID</th>
+                    <td>{{ audit_id }}</td>
+                </tr>
 
-    <p>
-        The reviewer decision has been recorded in the audit log.
-    </p>
+                <tr>
+                    <th>Reviewer Decision</th>
+                    <td>{{ decision }}</td>
+                </tr>
 
-    <p>
-        <a href="/">Screen another document</a>
-    </p>
+                <tr>
+                    <th>Reviewer Note</th>
+                    <td>
+                        {{ reviewer_note or "No note provided" }}
+                    </td>
+                </tr>
+            </table>
+
+            <a class="back-link" href="/">
+                ← Screen another declaration
+            </a>
+        </div>
+
+    </div>
 </body>
 </html>

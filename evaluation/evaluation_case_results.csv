@@ -1,0 +1,26 @@
+evaluation_group,case_id,description,target_rule,expected_status,actual_status,correct,flagged_rules
+Target-rule detection,EVAL-001,Missing mandatory importer,DOC-001,FLAG,FLAG,True,DOC-001
+Target-rule detection,EVAL-002,Zero declared value,VAL-001,FLAG,FLAG,True,VAL-001
+Target-rule detection,EVAL-003,Product description inconsistent with prototype HS reference,HS-001,FLAG,FLAG,True,HS-001
+Target-rule detection,EVAL-004,Frozen chicken meat without permit reference,RES-001,FLAG,FLAG,True,"HS-001, RES-001"
+Target-rule detection,EVAL-005,Fresh vegetables without permit reference,RES-002,FLAG,FLAG,True,"HS-001, RES-002"
+Target-rule detection,EVAL-006,Human ashes without permit reference,RES-003,FLAG,FLAG,True,"HS-001, RES-003"
+Target-rule detection,EVAL-007,Prescription medication without permit reference,RES-004,FLAG,FLAG,True,"HS-001, RES-004"
+Target-rule detection,EVAL-008,Agricultural pesticide without permit reference,RES-005,FLAG,FLAG,True,"HS-001, RES-005"
+Target-rule detection,EVAL-009,Firearm without permit reference,RES-006,FLAG,FLAG,True,"HS-001, RES-006"
+Target-rule detection,EVAL-010,Toy gun without permit reference,RES-007,FLAG,FLAG,True,"HS-001, RES-007"
+Target-rule detection,EVAL-011,Camouflage jacket without permit reference,RES-008,FLAG,FLAG,True,"HS-001, RES-008"
+Target-rule detection,EVAL-012,Motor vehicle without permit reference,RES-009,FLAG,FLAG,True,"HS-001, RES-009"
+Target-rule detection,EVAL-013,Natural honey prohibited-goods prototype case,PRO-001,FLAG,FLAG,True,"HS-001, PRO-001"
+Target-rule detection,EVAL-014,Counterfeit coins prohibited-goods prototype case,PRO-002,FLAG,FLAG,True,"HS-001, PRO-002"
+Target-rule detection,EVAL-015,Obscene publication prohibited-goods prototype case,PRO-003,FLAG,FLAG,True,"HS-001, PRO-003"
+Clean-case false-positive check,CLEAN-01,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-02,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-03,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-04,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-05,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-06,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-07,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-08,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-09,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,
+Clean-case false-positive check,CLEAN-10,Known-compliant electric bicycle,,NO FLAG,NO FLAG,True,

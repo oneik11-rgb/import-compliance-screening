@@ -1,0 +1,8 @@
+Metric,Value,Unit
+Target-rule detection accuracy,100.00,percent
+False-positive rate,0.00,percent
+Clean-case pass rate,100.00,percent
+Average pipeline latency,0.0727,milliseconds
+Median pipeline latency,0.0686,milliseconds
+95th-percentile pipeline latency,0.0931,milliseconds
+Local pipeline throughput,13721.91,screenings per second
